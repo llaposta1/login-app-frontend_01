@@ -35,15 +35,14 @@
             </div> -->
 
               <div class="form-group col-md-4 pull-right">
-                  <button class="btn btn-success" type="submit"> Create Account </button>
+                  <button class="btn btn-success"> Create Account </button>
               </div>          
           </form>
         <div v-if="error" class="text-danger">{{error.message}} </div>
         <div v-if="confirmPassword" class="form-group col-md-4 pull-right">
             <h3>Enter your code. Please check your email</h3>
             <div class="form-group col-md-4 pull-right">
-                <!-- <label class="block text-gray-700 text-sm font-bold" for="code">Code</label> -->
-                <label class="block text-gray-700 text-sm font-bold" for="code">Code</label>
+                <label for="code">Code</label>
                 <input type="text" name="code" id="code"
                 />
                 <button class="btn btn-success" @click="confirmSignUp"> Confirm code </button>
@@ -61,16 +60,15 @@ export default {
   data: () => ({
     //   first_name: "",
     //   last_name: "",
-    username: "",
+      username: "",
       email: "",
       password: "",
       confirmPassword: false,
       error: "",
-      code: ""
-
+      code: "",
     }),
   methods: {
-      async signUp(){
+      async signUp() {
           if(!this.email || !this.password){
               return;
           }
@@ -92,20 +90,19 @@ export default {
           if(!this.username || !this.code){
               return;
           }
-          try{
-              const { username, password, code} = this;
+          try{ 
               await this.$store.dispatch("auth/confirmSignUp", {
-                  username,
-                  code
+                  username: this.username,
+                  code: this.code
               });
-              await this.$store.dispatch("authlogin", {
-                  username,
-                  password
+              await this.$store.dispatch("auth/login", {
+                  username: this.username,
+                  password: this.password
               })
               this.$router.push("/profile")
-
           } catch (error) {
-              console.log("error");
+              console.log(error);
+              this.error = error;
           }
       }
 //     createAccount() {

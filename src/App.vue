@@ -1,16 +1,9 @@
 <template>
-  <div id="app">
-    <div class="contents">
+  <div id="app" class="contents">
     <div id="nav">
-      <Nav />
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/profile">Profile</router-link> | 
-      <router-link to="/signup">Sign up</router-link> | 
-    <router-link to="/login">Log in</router-link> |  
-      <router-link to="/resetpassword">Reset Password</router-link> -->
+      <Nav />    
     </div>
     <router-view/>
-  </div>
   </div>
 </template>
 <script>
@@ -25,8 +18,8 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["authAction"]),
-  }
-}
+  },
+};
 </script>
 <style>
 #app {

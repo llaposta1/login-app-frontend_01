@@ -27,13 +27,13 @@ export const auth = {
         return Promise.reject(error);
       }
     },
-    async confirmSignup(_, { username, code }) {
+    async confirmSignUp(_, { username, code }) {
       try {
         await Auth.confirmSignUp(username, code);
         return Promise.resolve();
       } catch (error) {
         console.log(error);
-        return Promise.reject();
+        return Promise.reject(error);
       }
     },
     async signUp(_, { username, password, email }) {
@@ -48,7 +48,7 @@ export const auth = {
         return Promise.resolve();
       } catch (error) {
         console.log(error);
-        return Promise.reject();
+        return Promise.reject(error);
       }
     },
     async authAction({ commit }) {

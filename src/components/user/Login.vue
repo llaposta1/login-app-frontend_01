@@ -26,7 +26,7 @@ export default {
   data: () => ({
     username: "",
     password: "",
-    email: "",
+    // email: "",
     error: "",
   }),
   methods: {
