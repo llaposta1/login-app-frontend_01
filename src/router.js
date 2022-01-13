@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import HomeComponent from "@/views/Home";
-import ProfileComponent from "@/components/user/Profile";
+import Profile from "@/views/Profile";
 import SignUp from "@/views/SignUp";
 import LoginComponent from "@/components/user/Login";
 import ResetPasswordComponent from "@/components/user/ResetPassword";
@@ -19,9 +19,9 @@ export default new Router({
       component: SignUp,
     },
     {
-      path: "/profile",
+      path: "/profile/:id",
       name: "Profile",
-      component: ProfileComponent,
+      component: Profile,
       meta: { requiresAuth: true },
     },
     { path: "/login", name: "Log in", component: LoginComponent },
